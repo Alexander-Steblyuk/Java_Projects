@@ -26,3 +26,7 @@
     left:0;
     top:0;
 }
+
+a.task-link {
+    padding: 0px 20px;
+}
