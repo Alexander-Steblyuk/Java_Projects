@@ -1,10 +1,10 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>ToDo List</title>
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="/js/main.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
     <div id="shadow"></div>
@@ -24,9 +24,12 @@
             <button type="reset" id="clear">Очистить</button>
         </form>
     </div>
-    <h1>Список текущих задач</h1>
+    <h1>Список текущих задач (<span th:text="${tasksCount}">0</span>)</h1>
     <button id="show-add-task-form">Добавить задачу</button>
     <br><br>
-    <div id="task-list"></div>
+    <div id="task-list" th:each="task : ${tasks}">
+        <a href="#" class="task-link" th:attr="data-id=${task.id}" th:text="${task.name}" data-visited=0></a>
+        <button class="delete-task" th:attr="data-id=${task.id}">Удалить</button><br>
+    </div>
 </body>
 </html>

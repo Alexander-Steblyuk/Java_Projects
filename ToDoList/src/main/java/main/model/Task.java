@@ -1,10 +1,12 @@
-package responeces;
+package main.model;
 
-import java.io.Serializable;
+import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
+@Entity
 public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private LocalDateTime term;

@@ -1,6 +1,6 @@
 package main;
 
-import responeces.Task;
+import main.model.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;

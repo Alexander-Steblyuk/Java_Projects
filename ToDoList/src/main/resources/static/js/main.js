@@ -1,18 +1,16 @@
 $(function() {
-    var linkIsVisited = 0;
-
     const appendTask = function(data) {
-        var taskCode = '<a href="#" class="task-link" data-id="' + data.id + '">'
+        var taskCode = '<a href="#" class="task-link" data-id="' + data.id + '"data-visited=0>'
         + data.name + '</a>' + '<button class="delete-task" data-id="' + data.id + '">Удалить</button><br>';
         $('#task-list').append('<div>' + taskCode + '</div>');
     };
 
-    //Loading tasks on load page
+    /*//Loading tasks on load page
     $.get('/tasks/', function(response) {
         for (i in response) {
             appendTask(response[i]);
         }
-    });
+    });*/
 
     //Show adding task form
     $('#show-add-task-form').click(function() {
@@ -32,7 +30,7 @@ $(function() {
         var link = $(this);
         var taskId = link.data('id');
 
-        if (linkIsVisited === 0) {
+        if (link.data('visited') === 0) {
             $.ajax({
                 method: "GET",
                 url: "/tasks/" + taskId,
@@ -46,7 +44,7 @@ $(function() {
                     }
                 }
             });
-            linkIsVisited = 1;
+            link.data('visited', 1);
         }
         return false;
     });
