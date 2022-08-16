@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         MongoDBSource mongoDBSource = MongoDBSource.instance();
         NoSQLQuery noSQLQuery = new NoSQLQuery(mongoDBSource);
+
         System.out.println(noSQLQuery.getStudentsCount());
         System.out.println(noSQLQuery.getStudentsCountFortyOlder());
         System.out.println(noSQLQuery.getOldestStudentName());
